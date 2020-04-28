@@ -1,0 +1,27 @@
+{
+  "name": "redis-and-socket.io",
+  "version": "1.0.0",
+  "description": "This project is for connect a socket.io and a channel with redis",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JjVera96/Redis-and-socket.io.git"
+  },
+  "keywords": [
+    "Redis",
+    "Socket.io"
+  ],
+  "author": "jjvera96",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JjVera96/Redis-and-socket.io/issues"
+  },
+  "homepage": "https://github.com/JjVera96/Redis-and-socket.io#readme",
+  "dependencies": {
+    "redis": "^3.0.2",
+    "socket.io": "^2.3.0"
+  }
+}
