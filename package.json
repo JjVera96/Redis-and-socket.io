@@ -4,7 +4,11 @@
   "description": "This project is for connect a socket.io and a channel with redis",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js"
+    "test": "nodemon index.js",
+    "start": "pm2 start i 4 -e err.log -o output.log --name redis_socket index.js",
+    "console": "pm2 monit",
+    "restart": "pm2 delete index.js && npm run start",
+    "stop": "pm2 delete index.js"
   },
   "repository": {
     "type": "git",
