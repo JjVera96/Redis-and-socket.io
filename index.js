@@ -18,15 +18,14 @@ io.on('connection', socket => {
 	// Conectamos con el servidor de redis cuando se conecte un nuevo usuario
 	var redisClient = redis.createClient(redisPort, redisHost)
 
-	//Se suscrbie al usuario y a la empresa
-  	socket.on('subscribe', (data) => {
-	    redisClient.subscribe(data.empresaId)
-	    redisClient.subscribe(data.userId)
-  	})
-
 	//Se suscribe a una tarea
 	socket.on('subscribeTask', taskId => {
 	    redisClient.subscribe(taskId)
+	})
+
+	//Se dessuscribe a una tarea
+	socket.on('subscribeTask', taskId => {
+	    redisClient.unsubscribe(taskId)
 	})
 
 	//Si se cierra el socket cerrar la conexion a redis
@@ -46,9 +45,7 @@ io.on('connection', socket => {
 		console.error(error)
 		socket.emit('forceDisconnect')
 	})
-
 })
-
 
 /* Levantamos el servidor http y lo ponemos a
 escuchar en el puerto port */
