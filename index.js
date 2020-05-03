@@ -16,7 +16,6 @@ conexión desde un socket en el navegador (cliente)
 e imprime en consola que un nuevo usuario se ha
 conectado */
 io.on('connection', socket => {
-	console.log('A user has connected...')
 	// Conectamos con el servidor de redis cuando se conecte un nuevo usuario
 	var redisClient = redis.createClient(redisPort, redisHost)
 
@@ -33,7 +32,6 @@ io.on('connection', socket => {
 	//Si se cierra el socket cerrar la conexion a redis
 	socket.on('disconnect', () => {
 		redisClient.quit()
-		console.log('A user has disconnected...')
 	})
 
   	/* Cuando redis genere una publicación (message)
