@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/JjVera96/Redis-and-socket.io#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "redis": "^3.0.2",
     "socket.io": "^2.3.0"
   }

@@ -2,12 +2,14 @@
 
 /* Creamos un servidor http y conectamos las
 funciones de socket a este servidor */
-var http = require('http').Server()
-var io = require('socket.io')(http)
-var redis = require('redis')
-const port = 3000
-const redisHost = 'localhost'
-const redisPort = 6379
+const http = require('http').Server()
+const io = require('socket.io')(http)
+const redis = require('redis')
+require('dotenv').config()
+
+const port = process.env.PORT ? process.env.PORT: 3000
+const redisHost = process.env.REDIS_HOST ? process.env.REDIS_HOST : 'localhost'
+const redisPort = process.env.REDIS_PORT ? process.env.REDIS_PORT : 6379
 
 /* Esta función recibe cualquier petición de
 conexión desde un socket en el navegador (cliente)
@@ -24,7 +26,7 @@ io.on('connection', socket => {
 	})
 
 	//Se dessuscribe a una tarea
-	socket.on('subscribeTask', taskId => {
+	socket.on('unsubscribeTask', taskId => {
 	    redisClient.unsubscribe(taskId)
 	})
 
